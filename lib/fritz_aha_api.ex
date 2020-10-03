@@ -1,0 +1,3 @@
+defmodule FritzAhaApi do
+
+end
