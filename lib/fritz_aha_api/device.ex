@@ -1,6 +1,6 @@
 defmodule FritzAhaApi.Device do
   defstruct [
-    #attributes
+    # attributes
     identifier: nil,
     id: nil,
     fwversion: nil,
@@ -8,13 +8,13 @@ defmodule FritzAhaApi.Device do
     productname: nil,
     functionbitmask: nil,
 
-    #values
+    # values
     present: 0,
     txbusy: 0,
     name: nil,
 
-    #optional
+    # optional
     batterylow: 0,
     battery: nil
- ]
+  ]
 end
