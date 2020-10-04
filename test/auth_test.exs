@@ -1,7 +1,7 @@
 defmodule AuthTest do
   use ExUnit.Case
   doctest FritzAhaApi.Auth
-  alias FritzAhaApi.{Auth}
+  alias FritzAhaApi.{Auth, SessionInfo}
 
   test "check password hash" do
     assert Auth.calculate_response('.bc','1234567z') ==  '1234567z-4d422a0edeeded87635c6de7ff5857e2'

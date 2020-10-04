@@ -17,7 +17,10 @@ defmodule FritzAhaApi.Auth do
     responseUri = 'http://fritz.box/login_sid.lua?response=' ++ calculate_response(password,session.challenge)
     {:ok, {{_type, _statuscode, _reason}, _headers, body}} = :httpc.request(responseUri)
 
-    body
+    case FritzAhaApi.Parser.parse_session_info(body) do
+      {:ok, session} -> session
+      _ -> :parser_failed
+    end
   end
 
   def calculate_response(password,challenge) do
@@ -25,8 +28,5 @@ defmodule FritzAhaApi.Auth do
     hash = :crypto.hash(:md5, encoded) |> Base.encode16(case: :lower)
     challenge ++ '-' ++ String.to_charlist(hash)
   end
-
-
-
 
 end
